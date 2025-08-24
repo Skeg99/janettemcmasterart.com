@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Art by Janette McMaster</title>
+    <link href="dist/output.css" rel="stylesheet" />
+    <style>
+        :root {
+            --primary: #C9B6BE;
+            --secondary: #F8F6F1;
+            --surface: #E8E4EC;
+            --text: #3E3E3E;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 font-serif">
+
+    <!-- Header with Navigation -->
+    <header id="siteHeader" class="fixed w-full z-50 bg-[var(--secondary)] border-b border-[var(--primary)]">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between">
+
+            <!-- Branding -->
+            <div class="text-center sm:text-left">
+                <h1 class="text-3xl sm:text-4xl font-bold tracking-wide text-[var(--primary)]">Art by Janette McMaster
+                </h1>
+                <p class="text-sm italic mt-1 text-gray-600">Watercolour artist celebrating landscapes, light and
+                    nostalgia</p>
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav class="mt-4 sm:mt-0">
+                <ul class="flex gap-6 text-[var(--primary)] font-medium text-sm sm:text-base">
+                    <li><a href="index.html" class="hover:underline">Home</a></li>
+                    <li><a href="gallery.html" class="hover:underline">Gallery</a></li>
+                    <li><a href="about.html" class="hover:underline">About</a></li>
+                    <li><a href="contact.html" class="hover:underline">Contact</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-[160px] p-6 max-w-6xl mx-auto">
+        <h2 class="text-4xl font-semibold mb-8 text-center">Gallery</h2>
+
+        <!-- Gallery Grid -->
+        <div id="gallery" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <!-- Repeat this block for each painting -->
+            <div class="group relative overflow-hidden rounded-lg cursor-pointer">
+                <img src="assets/PAINTING1.jpg" alt="Painting 1"
+                    class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                    loading="lazy" />
+            </div>
+            <!-- Add more paintings as needed -->
+            <div class="group relative overflow-hidden rounded-lg cursor-pointer">
+                <img src="assets/PAINTING2.jpg" alt="Painting 2"
+                    class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                    loading="lazy" />
+            </div>
+            <div class="group relative overflow-hidden rounded-lg cursor-pointer">
+                <img src="assets/PAINTING3.jpg" alt="Painting 3"
+                    class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                    loading="lazy" />
+            </div>
+            <div class="group relative overflow-hidden rounded-lg cursor-pointer">
+                <img src="assets/PAINTING4.jpg" alt="Painting 4"
+                    class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                    loading="lazy" />
+            </div>
+            <div class="group relative overflow-hidden rounded-lg cursor-pointer">
+                <img src="assets/PAINTING5.jpg" alt="Painting 5"
+                    class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                    loading="lazy" />
+            </div>
+        </div>
+    </main>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox"
+        class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+        <button id="closeBtn" class="absolute top-5 right-5 text-white text-4xl hover:text-gray-300">&times;</button>
+        <button id="prevBtn" class="absolute left-5 text-white text-5xl hover:text-gray-300">&#10094;</button>
+        <img id="lightboxImg" class="max-h-[80vh] max-w-[90vw] object-contain" src="" alt="Enlarged painting" />
+        <button id="nextBtn" class="absolute right-5 text-white text-5xl hover:text-gray-300">&#10095;</button>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        const gallery = document.getElementById('gallery');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const closeBtn = document.getElementById('closeBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        const images = Array.from(gallery.querySelectorAll('img')).map(img => img.src);
+        let currentIdx = 0;
+
+        gallery.addEventListener('click', e => {
+            const img = e.target.closest('img');
+            if (!img) return;
+            currentIdx = images.indexOf(img.src);
+            openLightbox();
+        });
+
+        const siteHeader = document.getElementById('siteHeader');
+
+        function openLightbox() {
+            lightboxImg.src = images[currentIdx];
+            lightbox.classList.remove('opacity-0', 'pointer-events-none');
+            siteHeader.classList.add('hidden'); // Hide header
+        }
+
+        function closeLightbox() {
+            lightbox.classList.add('opacity-0', 'pointer-events-none');
+            siteHeader.classList.remove('hidden'); // Show header again
+        }
+
+
+        function showPrev() {
+            currentIdx = (currentIdx - 1 + images.length) % images.length;
+            lightboxImg.src = images[currentIdx];
+        }
+
+        function showNext() {
+            currentIdx = (currentIdx + 1) % images.length;
+            lightboxImg.src = images[currentIdx];
+        }
+
+        closeBtn.addEventListener('click', closeLightbox);
+        prevBtn.addEventListener('click', showPrev);
+        nextBtn.addEventListener('click', showNext);
+
+        document.addEventListener('keydown', e => {
+            if (lightbox.classList.contains('pointer-events-none')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') showPrev();
+            if (e.key === 'ArrowRight') showNext();
+        });
+    </script>
+
+</body>
+
+</html>

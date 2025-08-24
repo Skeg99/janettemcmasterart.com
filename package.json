@@ -1,0 +1,12 @@
+{
+  "name": "simple-site-boilerplate",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "tailwindcss -i styles.css -o dist/output.css --watch --content \"index.html\""
+  },
+
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.10"
+  }
+}
+

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Art by Janette McMaster</title>
+  <link href="dist/output.css" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #C9B6BE;
+      --secondary: #F8F6F1;
+      --surface: #E8E4EC;
+      --text: #3E3E3E;
+    }
+  </style>
+</head>
+
+<body class="bg-[var(--secondary)] text-[var(--text)] font-serif">
+
+  <!-- Header with Navigation -->
+  <header class="fixed w-full z-50 bg-[var(--secondary)] border-b border-[var(--primary)]">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between">
+
+      <!-- Branding -->
+      <div class="text-center sm:text-left">
+        <h1 class="text-3xl sm:text-4xl font-bold tracking-wide text-[var(--primary)]">Art by Janette McMaster</h1>
+        <p class="text-sm italic mt-1 text-gray-600">Watercolour artist celebrating landscapes, light and nostalgia</p>
+      </div>
+
+      <!-- Navigation Menu -->
+      <nav class="mt-4 sm:mt-0">
+        <ul class="flex gap-6 text-[var(--primary)] font-medium text-sm sm:text-base">
+          <li><a href="index.html" class="hover:underline">Home</a></li>
+          <li><a href="gallery.html" class="hover:underline">Gallery</a></li>
+          <li><a href="about.html" class="hover:underline">About</a></li>
+          <li><a href="contact.html" class="hover:underline">Contact</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="text-center pt-50 py-20 px-6 bg-gradient-to-br from-[var(--primary)]/10 to-white/10">
+    <h2 class="text-2xl sm:text-3xl font-semibold mb-4">“Art enables us to find ourselves and lose ourselves at the same
+      time.”</h2>
+    <p class="text-sm text-gray-600">– Thomas Merton</p>
+  </section>
+
+  <!-- Gallery Preview -->
+  <section class="py-16 px-6">
+    <h3 class="text-2xl font-semibold text-center mb-10 text-[var(--primary)]">Featured Work</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <div class="rounded overflow-hidden shadow-sm border border-[var(--primary)]">
+        <img src="assets/PAINTING1.jpg" alt="Watercolour by Janette" class="w-full h-auto" />
+      </div>
+      <div class="rounded overflow-hidden shadow-sm border border-[var(--primary)]">
+        <img src="assets/PAINTING2.jpg" alt="Watercolour by Janette" class="w-full h-auto" />
+      </div>
+      <div class="rounded overflow-hidden shadow-sm border border-[var(--primary)]">
+        <img src="assets/PAINTING3.jpg" alt="Watercolour by Janette" class="w-full h-auto" />
+      </div>
+    </div>
+    <p class="text-center text-sm mt-6 text-gray-600">More coming soon. All artwork © Janette McMaster.</p>
+  </section>
+
+  <!-- About -->
+  <section class="bg-[var(--surface)] py-16 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <h3 class="text-2xl font-semibold text-[var(--primary)] mb-4">Meet the Artist</h3>
+      <p class="mb-6">Janette McMaster is a Scottish watercolourist who draws inspiration from the Aberdeenshire. Her
+        work blends delicate light, muted tones, and nostalgic warmth — often capturing the quiet beauty of everyday
+        moments.</p>
+      <img src="assets/PORTRAIT.jpg" alt="Janette McMaster Portrait"
+        class="mx-auto rounded-full h-40 w-40 object-cover border border-[var(--primary)] shadow-md" />
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-16 px-6">
+    <div class="max-w-lg mx-auto text-center">
+      <h3 class="text-2xl font-semibold text-[var(--primary)] mb-6">Get in Touch</h3>
+      <form class="space-y-4">
+        <input class="w-full px-4 py-3 rounded bg-white border border-[var(--primary)] placeholder-gray-500"
+          placeholder="Your Name" />
+        <input class="w-full px-4 py-3 rounded bg-white border border-[var(--primary)] placeholder-gray-500"
+          placeholder="Your Email" />
+        <textarea class="w-full px-4 py-3 rounded bg-white border border-[var(--primary)] placeholder-gray-500"
+          placeholder="Message or enquiry..."></textarea>
+        <button type="submit"
+          class="w-full bg-[var(--primary)] text-white py-3 rounded font-semibold hover:opacity-90 transition">Send
+          Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[var(--surface)] text-center py-6 text-sm text-gray-600">
+    <p>© 2025 Janette McMaster. Website built by Kyle Skelly.</p>
+  </footer>
+
+</body>
+
+</html>
